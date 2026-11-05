@@ -18,3 +18,10 @@ Four active-low switches select duty requests 0, 85, 170, or 255 through CCP1 on
 PIC16F628A is an 8-bit PIC target for Microchip's XC8 C toolchain, but the supported language is C, not C++. The installed `C:\Program Files\Microchip\xc8\v3.10` directory on the authoring machine contains only an `etc` folder; no compiler executable or usable build toolchain was present. No HEX was generated or included. See `docs/build.md` for steps to build with a complete XC8 installation and its device support pack, or to assemble the original source with the legacy MPASM/MPLINK tools.
 
 The C translation is a source port and has not been compiled or tested on hardware. Check configuration bits, oscillator assumptions, the selected device pack, and fan driver circuitry before programming a device.
+
+## Example
+
+![turn off](0.jpg)
+![speed 1](Fan-Speed-Control/blob/main/1.jpg)
+![speed 2](Fan-Speed-Control/blob/main/2.jpg)
+![speed 3](Fan-Speed-Control/blob/main/3.jpg)
