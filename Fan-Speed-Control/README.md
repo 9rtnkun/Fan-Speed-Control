@@ -22,6 +22,6 @@ The C translation is a source port and has not been compiled or tested on hardwa
 ## Example
 
 ![turn off](0.jpg)
-![speed 1](Fan-Speed-Control/blob/main/1.jpg)
-![speed 2](Fan-Speed-Control/blob/main/2.jpg)
-![speed 3](Fan-Speed-Control/blob/main/3.jpg)
+![speed 1](1.jpg)
+![speed 2](2.jpg)
+![speed 3](3.jpg)
