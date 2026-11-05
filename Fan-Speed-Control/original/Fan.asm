@@ -1,0 +1,76 @@
+;====================================================================
+; PIC16F628A - Fan PWM Control + LEDs Always ON (Backlight)
+; Config Word: 0x3F10
+; Transcribed from the Assembly listing in the supplied report.
+; Thai comments in the DOCX use a legacy encoding and did not extract
+; reliably; comments below are normalized. See README.md.
+;====================================================================
+ LIST P=16F628A
+ #INCLUDE <P16F628A.INC>
+
+ __CONFIG 0x3F10
+
+ ORG 0x000
+ GOTO MAIN
+
+MAIN
+ MOVLW 0x07
+ MOVWF CMCON
+
+ BANKSEL TRISA
+ CLRF TRISA
+ MOVLW B'00010111'
+ MOVWF TRISB
+
+ BANKSEL PR2
+ MOVLW D'255'
+ MOVWF PR2
+
+ BANKSEL CCPR1L
+ CLRF CCPR1L
+ MOVLW B'00001100'
+ MOVWF CCP1CON
+ MOVLW B'00000100'
+ MOVWF T2CON
+
+ BANKSEL PORTA
+ MOVLW B'00001111'
+ MOVWF PORTA
+
+LOOP
+ BANKSEL PORTB
+ BTFSS PORTB, 0
+ CALL SET_SPEED_0
+ BTFSS PORTB, 1
+ CALL SET_SPEED_1
+ BTFSS PORTB, 2
+ CALL SET_SPEED_2
+ BTFSS PORTB, 4
+ CALL SET_SPEED_3
+ GOTO LOOP
+
+SET_SPEED_0
+ BANKSEL CCPR1L
+ MOVLW D'0'
+ MOVWF CCPR1L
+ RETURN
+
+SET_SPEED_1
+ BANKSEL CCPR1L
+ MOVLW D'85'
+ MOVWF CCPR1L
+ RETURN
+
+SET_SPEED_2
+ BANKSEL CCPR1L
+ MOVLW D'170'
+ MOVWF CCPR1L
+ RETURN
+
+SET_SPEED_3
+ BANKSEL CCPR1L
+ MOVLW D'255'
+ MOVWF CCPR1L
+ RETURN
+
+ END
